@@ -25,4 +25,3 @@ function build_default_model(path_to_reaction_file::String)::Dict{String,Any}
     # return -
     return model_dictionary
 end
-
