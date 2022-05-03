@@ -11,7 +11,7 @@ model = build_default_model(path_to_model_file)
 # update the default initial conditions (default: zeros)
 #all xₒ units are nM
 xₒ = model["initial_conditions_array"]
-xₒ[1] = 3.4e3
+#xₒ[1] = 3.4e3
 xₒ[2] = 1.4e3
 xₒ[8] = 9e1
 xₒ[13] = 1e-3
@@ -94,5 +94,5 @@ soln = solve(prob)
 T = soln.t
 Xₘ = hcat(soln.u...)
 Thrombin = Xₘ[3,:]+1.2*Xₘ[39,:] #FIIa is the 3rd species in species_symbol_array
-plot(T,Thrombin)
-
+#p = CSV.read("data\\15pmTF_TFPIAT.csv",DataFrame)
+#plot(T,Thrombin);plot!(p[1],p[2])
