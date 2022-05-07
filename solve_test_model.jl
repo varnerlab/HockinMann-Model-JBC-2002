@@ -14,7 +14,7 @@ xₒ = model["initial_conditions_array"]
 #xₒ[1] = 3.4e3
 xₒ[2] = 1.4e3
 xₒ[8] = 9e1
-xₒ[13] = 1e-3
+xₒ[13] = 25e-3
 #xₒ[16] = 1.0
 xₒ[14] = 2.5
 xₒ[23] = 2e1
@@ -49,7 +49,7 @@ xₒ[31] = 1.6e2
 κ[21] = 1.8
 κ[22] = 7.5e-6 #Varner et al.
 κ[23] = 1e-8 #Varner et al.
-κ[24] = 8e-5 #Varner et al.
+κ[24] = 10e-5 #Varner et al.
 κ[25] = 0.1 #Varner et al.
 κ[26] = 15. #Varner et al.
 κ[27] = 0.9 #Varner et al.
@@ -77,11 +77,11 @@ xₒ[31] = 1.6e2
 κ[49] = 3.6e-4
 κ[50] = 0.32
 κ[51] = 1.1e-4
-κ[52] = 1e-3
+κ[52] = 5e-2
 κ[53] = 1.5e-6
 κ[54] = 7.1e-6
 κ[55] = 4.9e-7
-κ[56] = 7.1e-6
+κ[56] = 4.75e-6
 κ[57] = 2.3e-7
 
 # solve the model -
@@ -95,4 +95,4 @@ T = soln.t
 Xₘ = hcat(soln.u...)
 Thrombin = Xₘ[3,:]+1.2*Xₘ[39,:] #FIIa is the 3rd species in species_symbol_array
 #p = CSV.read("data\\15pmTF_TFPIAT.csv",DataFrame)
-#plot(T,Thrombin);plot!(p[1],p[2])
+plot(T[1:7001],Thrombin[1:7001])
