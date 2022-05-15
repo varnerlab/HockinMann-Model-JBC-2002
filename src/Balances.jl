@@ -14,4 +14,5 @@ function balances(dx, x, m, t)
     for i ∈ 1:number_of_dynamic_states
         dx[i] = tmp[i]
     end
+    abcd = dx[13]
 end
