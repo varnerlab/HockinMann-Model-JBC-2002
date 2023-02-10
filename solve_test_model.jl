@@ -11,17 +11,16 @@ model = build_default_model(path_to_model_file)
 # update the default initial conditions (default: zeros)
 #all xₒ units are nM
 xₒ = model["initial_conditions_array"]
-#xₒ[1] = 3.4e3
-xₒ[2] = 1.4e3
-xₒ[8] = 9e1
-xₒ[13] = 1e-3
-#xₒ[16] = 1.0
+xₒ[1] = 3400.
+xₒ[2] = 1400.
+xₒ[8] = 90.
+xₒ[13] = 20e-3
 xₒ[14] = 2.5
-xₒ[23] = 2e1
-xₒ[24] = 1e1
+xₒ[23] = 20.
+xₒ[24] = 10.
 xₒ[25] = 0.7
-xₒ[29] = 1e-1
-xₒ[31] = 1.6e2
+xₒ[29] = 0.1
+xₒ[31] = 160.
 
 # set up rate constants - order of rates in the reaction_symbol_array -
 #κ have been converted to nM-1s-1 where there is a second order reaction
@@ -30,9 +29,9 @@ xₒ[31] = 1.6e2
 κ[2] = 3.1e-3
 κ[3] = 2.5e-2
 κ[4] = 2e-3
-κ[5] = 9e-2 #Anand* - indicates where i got the value from, * indicates that i'm not convinced with the values because it wasnt the exact same reaction
-κ[6] = 5e-3 #Anand*
-κ[7] = 0.5 #Anand*
+κ[5] = 9e-2
+κ[6] = 5e-3 
+κ[7] = 0.5
 κ[8] = 0.1 #Varner et al.
 κ[9] = 1. #Varner et al.
 κ[10] = 0.5 #Varner et al.
@@ -53,9 +52,9 @@ xₒ[31] = 1.6e2
 κ[25] = 0.1 #Varner et al.
 κ[26] = 15. #Varner et al.
 κ[27] = 0.9 #Varner et al.
-κ[28] = 1e7*1e-9
+κ[28] = 1e-2
 κ[29] = 5e-3
-κ[30] = 1e8*1e-9
+κ[30] = 1e-1
 κ[31] = 1e-3
 κ[32] = 8.2
 κ[33] = 6e-3
@@ -94,5 +93,5 @@ soln = solve(prob)
 T = soln.t
 Xₘ = hcat(soln.u...)
 Thrombin = Xₘ[3,:]+1.2*Xₘ[39,:] #FIIa is the 3rd species in species_symbol_array
-#p = CSV.read("data\\15pmTF_TFPIAT.csv",DataFrame)
-#plot(T[1:7001],Thrombin[1:7001])
+p = CSV.read("data\\25pmTF_TFPIAT.csv",DataFrame)
+plot(T[1:7001],Thrombin[1:7001])
